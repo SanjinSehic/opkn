@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Todos</title>
+        <link href="http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/4.1/examples/cover/cover.css" rel="stylesheet">
+    <style>
+        .deleteButton {
+            margin-left: 20px;
+        }
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="text-center">
+    <form action="/todos/add" method="POST" class="form-signin needs-validation">
+   <h1 class="h3 mb-3 font-weight-normal">Todos</h1> 
+   <ul>
+       <% if(todos1) { %>
+        <% todos1.todos.forEach(function(t){ %>
+            <li>
+                <%= t.todo %><button class="deleteButton" onclick="deleteTodo('<%= t.todo %>')">delete </button>
+            </li>
+          <% }); %>
+       <% } %>
+       <% if(!todos1) { %>
+            <h1 class="h3 mb-3 font-weight-normal">No todos</h1>
+        <% } %>
+   </ul>
+    
+        <label for="validationCustom01"></label>
+        <input type="text" name="todo" id="validationCustom01" placeholder="Dodaj todo" required>
+        <input type="submit" value="dodaj" class="btn btn-lg btn-primary btn-block">
+        <a href="/logout">logout</a>
+
+    </form>
+    
+    <script src="javascripts/deleteTodo.js"></script>
+</body>
+</html>
